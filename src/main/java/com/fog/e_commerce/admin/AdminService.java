@@ -30,6 +30,9 @@ public class AdminService {
         if (userRepository.findByEmail(email).orElse(null) != null){
             return "This email already used.";
         }
+        else if (adminRepository.findByEmail(email).orElse(null) != null){
+            return "This email already used.";
+        }
         else {
             Admin admin = new Admin(username, email, passwordEncoder.encode(password));
             adminRepository.save(admin);

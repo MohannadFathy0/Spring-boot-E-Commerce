@@ -12,7 +12,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,23 +45,18 @@ public class AuthenticationService {
     }
 
     public String userSignIn(SignInRequest request) {
-        if (adminRepository.findByEmail(request.getEmail()) != null){
-            return "This email already used.";
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
+        var user = repository.findByEmail(request.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User not found"));;
+        if (!user.isVerified()) {
+            throw new RuntimeException("Email not verified. Please verify your email before logging in.");
         }
-        else {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            request.getEmail(),
-                            request.getPassword()
-                    )
-            );
-            var user = repository.findByEmail(request.getEmail()).orElseThrow(() -> new UsernameNotFoundException("User not found"));;
-            if (!user.isVerified()) {
-                throw new RuntimeException("Email not verified. Please verify your email before logging in.");
-            }
-            var jwtToken = service.generateToken(user, user.getId());
-            return jwtToken;
-        }
+        var jwtToken = service.generateToken(user, user.getId());
+        return jwtToken;
     }
 
     public void sendVerificationEmail(String email, String code) {

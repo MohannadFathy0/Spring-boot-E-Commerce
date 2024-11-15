@@ -1,9 +1,11 @@
 package com.fog.e_commerce.auth;
 
+import com.fog.e_commerce.admin.AdminRepository;
 import com.fog.e_commerce.cart.CartService;
 import com.fog.e_commerce.user.Role;
 import com.fog.e_commerce.user.User;
 import com.fog.e_commerce.user.UserRepository;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +19,14 @@ public class AuthenticationController {
 
     private final AuthenticationService service;
     private final UserRepository repository;
+    private final AdminRepository adminRepository;
     private final PasswordEncoder passwordEncoder;
     private final CartService cartService;
 
-    public AuthenticationController(AuthenticationService service, UserRepository repository, PasswordEncoder passwordEncoder, CartService cartService) {
+    public AuthenticationController(AuthenticationService service, UserRepository repository, AdminRepository adminRepository, PasswordEncoder passwordEncoder, CartService cartService) {
         this.service = service;
         this.repository = repository;
+        this.adminRepository = adminRepository;
         this.passwordEncoder = passwordEncoder;
         this.cartService = cartService;
     }
@@ -33,7 +37,14 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signUp")
-    public String signUp(@RequestBody SignupRequest request) {
+    public String signUp(@Valid @RequestBody SignupRequest request) {
+
+        if (adminRepository.findByEmail(request.getEmail()).orElse(null) != null){
+            return "This email already used as Admin.";
+        }
+        else if (repository.findByEmail(request.getEmail()).orElse(null) != null){
+            return "This email already used as User.";
+        }
 
         // Create a new user
         var user = new User(request.getFirstname(), request.getLastname(), request.getPhone(),

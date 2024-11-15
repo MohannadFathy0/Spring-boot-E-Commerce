@@ -15,12 +15,12 @@ public class ProductController {
         this.service = service;
     }
 
-    @GetMapping("/product/id/{id}")
+    @GetMapping("/api/product/id/{id}")
     private Product getProduct(@PathVariable Long id) {
         return service.getProduct(id);
     }
 
-    @GetMapping("/product/gender/{gender}")
+    @GetMapping("/api/product/gender/{gender}")
     private List<Product> getAllProductsByGender(@PathVariable String gender) {
         return service.findAllProductsByGender(gender);
     }

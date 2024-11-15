@@ -1,6 +1,7 @@
 package com.fog.e_commerce.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,9 @@ public class User implements UserDetails {
     private Address address;
     @Column(unique = true)
 
+    @NotBlank(message = "Email is mandatory")
     private String email;
+    @NotBlank(message = "Password is mandatory")
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;

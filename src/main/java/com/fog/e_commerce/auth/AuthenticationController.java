@@ -31,11 +31,13 @@ public class AuthenticationController {
         this.cartService = cartService;
     }
 
+    @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return service.getAllUsers();
     }
 
+    @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
     @PostMapping("/signUp")
     public String signUp(@Valid @RequestBody SignupRequest request) {
 
@@ -65,11 +67,13 @@ public class AuthenticationController {
         return "Verification email sent";
     }
 
+    @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
     @PostMapping("/signIn")
     public String signIn(@RequestBody SignInRequest request) {
         return service.userSignIn(request);
     }
 
+    @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
     @PostMapping("/verify")
     public String verifyCode(@RequestParam String email, @RequestParam String code) {
 

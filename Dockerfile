@@ -1,7 +1,7 @@
 # Use an official OpenJDK image as a parent image
 FROM openjdk:17-jdk-alpine
 
-# Make port 8081 available to the world outside this container
+# Make port 8080 available to the world outside this container
 EXPOSE 8081
 
 # The application's jar file

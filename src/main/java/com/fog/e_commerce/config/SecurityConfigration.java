@@ -30,10 +30,10 @@ public class SecurityConfigration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("*"); // Allow all origins. Adjust as needed.
+        configuration.addAllowedOriginPattern("*"); // Allow all origins. Adjust as needed.
         configuration.addAllowedMethod("*"); // Allow all HTTP methods.
         configuration.addAllowedHeader("*"); // Allow all headers.
-        configuration.setAllowCredentials(false); // Allow credentials if needed.
+        configuration.setAllowCredentials(true); // Allow credentials if needed.
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
@@ -51,7 +51,7 @@ public class SecurityConfigration {
                                 .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/product/**").hasRole("Admin")
                                 .requestMatchers(HttpMethod.DELETE, "/product/**").hasRole("Admin")
-                                .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                                .requestMatchers("/user/**").permitAll()
                                 .requestMatchers("/ws-offers/**").permitAll()
                                 .anyRequest().authenticated()
                 )

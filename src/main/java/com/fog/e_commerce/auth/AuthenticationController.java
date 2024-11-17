@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 public class AuthenticationController {
 
     private final AuthenticationService service;

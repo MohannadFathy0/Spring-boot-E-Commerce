@@ -30,8 +30,7 @@ public class SecurityConfigration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:5173", "http://localhost:3000")); // Allow all origins. Adjust as needed.
-        configuration.addAllowedOrigin("http://31.220.51.27");
+        configuration.addAllowedOrigin("*"); // Allow all origins. Adjust as needed.
         configuration.addAllowedMethod("*"); // Allow all HTTP methods.
         configuration.addAllowedHeader("*"); // Allow all headers.
         configuration.setAllowCredentials(false); // Allow credentials if needed.
@@ -49,9 +48,10 @@ public class SecurityConfigration {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                                .requestMatchers("/api/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/product/**").hasRole("Admin")
+                                .requestMatchers(HttpMethod.DELETE, "/product/**").hasRole("Admin")
                                 .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-                                .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/ws-offers/**").permitAll()
                                 .anyRequest().authenticated()
                 )

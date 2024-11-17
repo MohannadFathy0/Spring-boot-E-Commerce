@@ -1,6 +1,7 @@
 com\fog\e_commerce\cart\CartController.class
 com\fog\e_commerce\notification\NotificationController.class
 com\fog\e_commerce\config\WebSocketConfig.class
+com\fog\e_commerce\DataLoader.class
 com\fog\e_commerce\user\User$UserBuilder.class
 com\fog\e_commerce\cart\ReduceQuantityRequest.class
 com\fog\e_commerce\config\JwtService.class

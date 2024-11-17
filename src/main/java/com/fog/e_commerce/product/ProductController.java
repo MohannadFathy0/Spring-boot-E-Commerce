@@ -14,7 +14,7 @@ public class ProductController {
     public ProductController(ProductService service) {
         this.service = service;
     }
-    @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "Content-Type, Authorization")
+
     @GetMapping("/id/{id}")
     private Product getProduct(@PathVariable Long id) {
         return service.getProduct(id);

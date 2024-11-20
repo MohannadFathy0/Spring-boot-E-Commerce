@@ -1,12 +1,9 @@
 package com.fog.e_commerce.auth;
 
 import com.fog.e_commerce.admin.AdminRepository;
-import com.fog.e_commerce.cart.CartService;
 import com.fog.e_commerce.config.JwtService;
-import com.fog.e_commerce.user.Role;
 import com.fog.e_commerce.user.User;
 import com.fog.e_commerce.user.UserRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;

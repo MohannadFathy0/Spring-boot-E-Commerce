@@ -1,10 +1,11 @@
 package com.fog.e_commerce.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -14,6 +15,11 @@ public class ProductService {
     @Autowired
     public ProductService(ProductRepository repository) {
         this.repository = repository;
+    }
+
+    public Page<Product> getAllProduct(Pageable pageable) {
+        Page<Product> product = repository.findAll(pageable);
+        return product;
     }
 
     public Product getProduct(Long id) {
@@ -47,8 +53,8 @@ public class ProductService {
         return ResponseEntity.ok(product);
     }
 
-    public List<Product> findAllProductsByGender(String gender){
-        List<Product> products = repository.findByGender(gender);
+    public List<Product> findAllProductsByGender(String gender, Pageable pageable){
+        List<Product> products = repository.findByGender(gender, pageable);
         return products;
     }
 }

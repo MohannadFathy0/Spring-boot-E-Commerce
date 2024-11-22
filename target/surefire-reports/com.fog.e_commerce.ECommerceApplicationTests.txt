@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.fog.e_commerce.ECommerceApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.65 s -- in com.fog.e_commerce.ECommerceApplicationTests
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.03 s -- in com.fog.e_commerce.ECommerceApplicationTests

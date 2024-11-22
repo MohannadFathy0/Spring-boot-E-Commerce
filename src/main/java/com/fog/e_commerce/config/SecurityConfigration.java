@@ -33,7 +33,7 @@ public class SecurityConfigration {
         configuration.addAllowedOriginPattern("*"); // Allow all origins. Adjust as needed.
         configuration.addAllowedMethod("*"); // Allow all HTTP methods.
         configuration.addAllowedHeader("*"); // Allow all headers.
-        configuration.setAllowCredentials(true); // Allow credentials if needed.
+        configuration.setAllowCredentials(false); // Allow credentials if needed.
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);

@@ -47,14 +47,14 @@ public class SecurityConfigration {
                 .cors(c -> c.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-//                                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-//                                .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
-//                                .requestMatchers(HttpMethod.POST, "/product/**").hasRole("Admin")
-//                                .requestMatchers(HttpMethod.DELETE, "/product/**").hasRole("Admin")
-//                                .requestMatchers("/cart/**").authenticated()
-//                                .requestMatchers("/admin/**").permitAll()
-//                                .requestMatchers("/user/**").permitAll()
-//                                .requestMatchers("/ws-offers/**").permitAll()
+                                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/product/**").hasRole("Admin")
+                                .requestMatchers(HttpMethod.DELETE, "/product/**").hasRole("Admin")
+                                .requestMatchers("/cart/**").authenticated()
+                                .requestMatchers("/admin/**").permitAll()
+                                .requestMatchers("/user/**").permitAll()
+                                .requestMatchers("/ws-offers/**").permitAll()
                                 .anyRequest().permitAll()
                 )
                 .sessionManagement(sessionManagement ->

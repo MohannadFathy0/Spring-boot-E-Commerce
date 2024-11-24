@@ -33,7 +33,7 @@ public class SecurityConfigration {
         configuration.addAllowedOriginPattern("*"); // Allow all origins. Adjust as needed.
         configuration.addAllowedMethod("*"); // Allow all HTTP methods.
         configuration.addAllowedHeader("*"); // Allow all headers.
-        configuration.setAllowCredentials(false); // Allow credentials if needed.
+        configuration.setAllowCredentials(true); // Allow credentials if needed.
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
@@ -49,8 +49,8 @@ public class SecurityConfigration {
                         authorizeRequests
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
-//                                .requestMatchers(HttpMethod.POST, "/product/**").hasRole("ADMIN")
-//                                .requestMatchers(HttpMethod.DELETE, "/product/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/product/**").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/product/**").hasRole("ADMIN")
                                 .requestMatchers("/cart/**").authenticated()
                                 .requestMatchers("/admin/**").permitAll()
                                 .requestMatchers("/user/**").permitAll()

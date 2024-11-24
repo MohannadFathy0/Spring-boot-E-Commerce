@@ -1,19 +1,43 @@
 package com.fog.e_commerce.product;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.Date;
 import java.util.List;
 
 public class ProductDto {
 
+    @NotBlank(message = "Name cannot be empty")
     private String name;
+
+    @NotBlank(message = "Description cannot be empty")
     private String description;
+
+    @NotNull(message = "Gender cannot be null")
     private String gender;
+
+    @NotNull(message = "Image cannot be null")
     private String image;
+
+    @NotNull(message = "Size cannot be null")
     private String size;
+
+    @NotNull(message = "Category cannot be null")
     private String category;
+
+    @DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than zero")
     private Double price;
-    private int quantity;
-    private int sellingCount;
+
+    @Min(value = 0, message = "Quantity must be zero or greater")
+    private Integer quantity;
+
+    @Min(value = 0, message = "Selling count must be zero or greater")
+    private Integer sellingCount;
+
+    @NotNull(message = "Date cannot be null")
     private Date date;
 
     public ProductDto(String description, String gender, String image, String size,

@@ -34,7 +34,6 @@ public class ProductController {
     }
 
     // Admin methods
-
     @PostMapping("/")
     private ResponseEntity addProduct(@RequestBody ProductDto dto) {
         return service.addProduct(dto);

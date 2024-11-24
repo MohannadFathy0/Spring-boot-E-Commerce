@@ -1,3 +1,4 @@
 com\fog\e_commerce\ECommerceApplicationTests$Calculator.class
 com\fog\e_commerce\ECommerceApplicationTests.class
+com\fog\e_commerce\product\ProductServiceTest.class
 com\fog\e_commerce\admin\AdminRepositoryTest.class

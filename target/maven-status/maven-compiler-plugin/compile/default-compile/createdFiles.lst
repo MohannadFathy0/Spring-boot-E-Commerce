@@ -1,4 +1,5 @@
 com\fog\e_commerce\cart\CartController.class
+com\fog\e_commerce\exception\ResourceNotFoundException.class
 com\fog\e_commerce\notification\NotificationController.class
 com\fog\e_commerce\config\WebSocketConfig.class
 com\fog\e_commerce\DataLoader.class
@@ -19,10 +20,12 @@ com\fog\e_commerce\product\ProductService.class
 com\fog\e_commerce\payment\PayPalConfig.class
 com\fog\e_commerce\cart\CartItemDto.class
 com\fog\e_commerce\cart\CartService.class
+com\fog\e_commerce\exception\InvalidInputException.class
 com\fog\e_commerce\notification\Notification.class
 com\fog\e_commerce\notification\NotificationRepository.class
 com\fog\e_commerce\admin\AdminDto.class
 com\fog\e_commerce\product\ProductDto.class
+com\fog\e_commerce\exception\GlobalExceptionHandler.class
 com\fog\e_commerce\user\Address.class
 com\fog\e_commerce\cart\CartRepository.class
 com\fog\e_commerce\notification\NotificationService.class

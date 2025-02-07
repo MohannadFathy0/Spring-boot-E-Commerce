@@ -1,7 +1,6 @@
 package com.fog.e_commerce.admin;
 
 import jakarta.persistence.*;
-import lombok.NonNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
